@@ -1,0 +1,413 @@
+
+# coding: utf-8
+
+# # CPE-341, Quiz 2/2015
+# # Question Set D
+# 
+# - Iteration Design Pattern : List, Dictionary
+# - Using Class `Card` in a List
+
+# In[44]:
+
+get_ipython().magic('reload_ext load_style')
+get_ipython().magic('load_style talk.css')
+
+
+# In[3]:
+
+## 57113023-6
+##wararwit mankran
+##
+## คลิก Run cell นี้เพียงครั้งเดียว
+##
+##
+import datetime
+datetime.datetime.now().isoformat()
+
+
+# ## Question 1 ( @2 pt x 2 = 4 pts )
+# 
+# ### Q1.a 
+# จงเขียนคำสั่ง เพื่อพิมพ์ค่าตัวเลขจาก list `mycoins` ที่ index ที่กำหนดให้
+
+# In[45]:
+
+## ไม่แก้ไขข้อมูลใน cell นี้
+
+mycoins = [12, 4, 10, 1, 6, 18, 19, 4]
+
+
+# In[46]:
+
+## ANSWER Q1.a
+##
+index = 6
+
+
+
+print(mycoins[index])
+
+
+# ### Q1.b 
+# จงเขียนคำสั่ง เพื่อพิมพ์ตัวเลขที่มีค่า ***น้อยกว่า*** 10 จาก **list** `mycoins` ในข้อ (1.a)
+
+# In[47]:
+
+## ANSWER Q1.b
+##
+
+for x in range(0, 7):
+     if mycoins[x] <10:
+        print(mycoins[x])
+    
+
+
+
+# In[ ]:
+
+
+
+
+# ## Question 2 ( @3 pts x 4 = 12 pts )
+# 
+# ### Q2.a 
+# จงสร้าง **list** เพื่อเก็บข้อมูลตัวเลขคู่ $ 2, 4, 6, ... , 28, 30, 32 $   โดยใข้ `range`
+
+# In[48]:
+
+## ANSWER Q2.a
+##
+
+
+mylist=list(range(2,34,2))
+print(mylist)
+
+
+# In[ ]:
+
+
+
+
+# ### Q2.b 
+# จงสร้าง **list** เพื่อเก็บ**ตัวเลขสุ่ม** ในช่วง 1-99 จำนวน 4 ตัวเลข โดยใข้ฟังก์ชั่น `randint` จากไลบรารี `random`
+
+# In[65]:
+
+## ANSWER Q2.b
+## 
+## 
+
+from random import randint
+
+
+# In[50]:
+
+list2=[]
+
+
+
+# In[51]:
+
+for i in range(0,4):
+    x = random.randint(0, 99)
+    list2.append(x)
+print(list2,end=" ")
+
+
+# ### Q2.c 
+# จงเขียน `def` ชื่อ `sum_of_sqrt` สำหรับหาผลรวมของ square root ของตัวเลขใน **list** ที่เป็น argument  
+# 
+# เช่น เมื่อเรียกใช้ `sum_of_sqrt([1,2,3,4,5,6,7,8,9])` จะได้ผลลัพธ์เป็นดังนี้
+# 
+# $$\sqrt{1}  + \sqrt{2} + \sqrt{3} +  ...  + \sqrt{7} + \sqrt{8} + \sqrt{9} = 19.30600052603572 $$
+
+# In[66]:
+
+from math import sqrt
+
+def sum_of_sqrt(number_list):
+    m=0
+    for x in number_list:
+        m = m+math.sqrt(x)
+    return m
+
+
+# In[53]:
+
+## Test sum_of_sqrt()
+nums = [i for i in range(10) ]
+
+print(nums)
+sum_of_sqrt(nums)
+
+
+# In[54]:
+
+## Test sum_of_sqrt() again 
+nums = [100, 104, 108, 112, 116, 120]
+
+print(nums)
+sum_of_sqrt(nums)
+
+# should print out:
+# 62.89812988122953
+
+
+# In[ ]:
+
+
+
+
+# ### Q2.d 
+# จงหา**ค่าเฉลี่ย**ของตัวเลขใน **list** ต่อไปนี้ แล้วเก็บไว้ที่ตัวแปรชื่อ `avg_` โดยใข้ฟังก์ชั่น `sum`, `len` 
+# 
+# ```
+# myTest = [200, 265, 228, 202, 235, 284]
+# ```
+
+# In[67]:
+
+# ANSWER Q2.d
+##
+##
+
+myTest = [200, 265, 228, 202, 235, 284]
+
+
+# In[72]:
+
+def avg_(num):
+    print (sum(num)/len(num))
+    
+avg_(myTest)
+
+
+# ## Question 3 ( @6 pts x 2 = 12 pts )
+# 
+# ### Q3.a 
+# กำหนดให้ **dict** `๋JP_COINS` เก็บค่าเงินของเหรียญญี่ปุ่น (เงินเยน ¥) 6 ชนิด (ใช้ใน Q3.b)
+# 
+# จงหาจำนวนเหรียญใน list `piggy` ซึ่งเป็นกระปุกเงินเก็บเหรียญ โดยผลลัพธ์เก็บค่าไว้ที่ตัวแปร `count` 
+
+# In[57]:
+
+## ไม่แก้ไขข้อมูลใน cell นี้
+
+JP_COINS = { "1Y": 1, "5Y": 5, "10Y": 10, "50Y": 50, "100Y": 100, "500Y": 500 }
+
+## piggy keeps the number of Japanese ¥ coins 
+piggy = { "500Y":2, "1Y":8, "100Y":4, "10Y":24, "50Y":2 }
+
+
+# In[74]:
+
+## ANSWER Q3.a
+##
+
+count = 0
+#------- add your code here
+for i in piggy:
+    count = count+piggy[i]
+
+print (count)
+
+
+
+
+
+# In[59]:
+
+print(count)
+
+
+# ### Q3.b
+# จงหามูลค่าของเงินทั้งหมดใน list `piggy` (หน่วย: เยน)
+
+# In[75]:
+
+## ANSWER Q3.b
+##
+
+total = 0.
+#------ add your code here
+for i in piggy:
+   total =total + JP_COINS[i]*piggy[i]
+
+print (total)
+
+
+
+
+# In[16]:
+
+print(total)
+
+
+# In[ ]:
+
+
+
+
+# ## Question 4 ( @6 pts x 2 = 12 pts )
+# 
+# ### Q4.a 
+# จาก class `Card` ซึ่งแทนไพ่แต่ละใบ จงสร้างไพ่ 4 ใบที่ไม่ซ้ำกัน เก็บไว้ใน list ชื่อ `my_cards` แล้วหาค่าผลรวมของหน้าไพ่ เก็บผลลัพธ์ที่ตัวแปร `my_points`
+# 
+# ในที่นี้ ให้คิดหน้าไพ่ ตาม rank ที่กำหนดใน dict `CARD_VALUE` 
+# เช่น ไพ่ `2` มีค่า `2`, `3` มีค่า 3, .... ไพ่ `T` (หรือเลข 10) มีค่า 10, `J` มีค่า 11, ..., ไพ่ `A` มีค่า 14 
+
+# In[28]:
+
+## ไม่แก้ไขข้อมูลใน cell นี้
+CARD_SUIT = "cdhs"             # Club, Diamond, Heart, Spade
+CARD_RANK = "--23456789TJQKA"  # index 0-1 not used
+CARD_VALUE = {
+    '2':2, '3':3, '4':4,  '5':5,  '6':6,  '7':7,
+    '8':8, '9':9, 'T':10, 'J':11, 'Q':12, 'K':13, 'A':14
+}
+
+class Card(object):     
+    def __init__(self, face):
+        self.__face = face
+        
+    @property
+    def face(self):
+        return self.__face
+        
+    @property
+    def suit(self):
+        card_suit = self.__face[0]
+        return card_suit
+
+    @property
+    def rank(self):
+        card_rank = self.__face[1]
+        return card_rank        
+
+
+# In[61]:
+
+## ตัวอย่างการสร้่้างไพ่ 1 ใบ
+c1 = Card('c2')
+print(c1.suit, c1.rank,c1.face)
+
+
+# In[62]:
+
+## example: look up for the value of a card
+c2 = Card('sQ')
+print( CARD_VALUE[ c2.rank ] ) 
+
+
+# In[33]:
+
+c3 = Card('dT')
+c3
+
+
+# In[34]:
+
+## ANSWER Q4.a
+##
+## สร้างไพ่ 4 ใบที่ไม่ซ้ำกัน เก็บไว้ใน list ชื่อ my_cards 
+## แล้วหาค่าผลรวมของหน้าไพ่ เก็บผลลัพธ์ที่ตัวแปร my_points
+##
+
+# create 4 cards in  my_cards
+my_cards = []  
+
+my_points = 0
+#--------- add your code here
+cards=['d2', 'sQ', 'cA', 'h8']
+cards2=['d3', 'h2',  'c4', 'cA']
+for c2 in cards2:
+    my_cards.append(Card(c2))
+    my_points += CARD_VALUE[ Card(c2).rank ]
+
+
+
+
+# In[ ]:
+
+
+
+
+# In[35]:
+
+# Run this to print the faces of 4 cards, and my_points
+card_faces_str = "My cards:"
+for c in my_cards:
+    card_faces_str += " " + c.face
+    
+print("{}. Total value: {}.".format(card_faces_str, my_points))
+
+
+# In[36]:
+
+# Test 4 cards of 'd2', 'sQ', 'cA', 'h8'
+#....Total value is 36
+
+# Test 4 cards of 'd3', 'h2',  'c4', 'cA'
+#....Total value is 23
+
+
+# ### Q4.b 
+# จงปรับปรุุง def `printCards` เพื่อพิมพ์หน้าไพ่, จำนวนไพ่ และค่าผลรวมของหน้าไพ่ทั้งหมดที่อยู่ใน list `card_list` 
+# 
+# **ตัวอย่างผลลัพธ์**
+# ```
+# ---------------- Cards ----------------
+# Cards : ['d2', 'sQ', 'cA', 'h8']
+# Count : 4
+# Value : 36
+# ```
+
+# In[85]:
+
+## ANSWER Q3.b
+## พิมพ์หน้าไพ่, จำนวนไพ่ และค่าผลรวมของหน้าไพ่ทั้งหมดที่อยู่ใน card_list
+##
+
+def printCards( card_list ):
+    total_value = 0 
+    count = 0
+    
+    for c2 in card_list:
+        total_value += CARD_VALUE[ c2.rank ]
+    count = len(card_list)
+    
+    card_faces_str = [c.face for c in card_list]        
+    print("---------------- Cards ----------------")
+    print("Cards : {}".format( card_faces_str ))
+    print("Count : {}".format( count ))
+    print("Value : {}".format( total_value ))
+
+
+# In[86]:
+
+#--- Test the def printCoins ---
+printCards( my_cards )
+
+
+
+# In[ ]:
+
+
+
+
+# In[ ]:
+
+
+
+
+# In[43]:
+
+import datetime
+datetime.datetime.now().isoformat()
+##
+## 57113023-6
+##wararwit mankran
+## แล้วคลิก Run cell ครั้งเดียว เมื่อส่งงาน
+
+
+# ## end of IPynb
